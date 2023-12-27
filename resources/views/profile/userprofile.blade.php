@@ -12,6 +12,7 @@
             <p>{{ session('flash_message') }}</p>
         @endif
         <!-- ユーザーID -->
+        <input type="hidden" name="id" value="{{ $user->id }}">
         <div> 
             <label for="user_id">ユーザーID:</label>
             <input type="text" id="user_id" name="user_id" value="{{ $user->user_id }}">

@@ -16,11 +16,11 @@ class UserController extends Controller
 
     public function update(Request $request,User $user)
     {
+        
         $user->user_id = $request->input('user_id');
         $user->email = $request->input('email');
         $user->password = $request->input('password');
         $user->birthday = $request->input('birthday');
-        
         // $birthday = new Carbon();
         // $birthday = Carbon::create(
         //     $request->year, $request->month, $request->day
