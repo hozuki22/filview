@@ -31,5 +31,5 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/userprofile/{id}',[UserController::class,'show']);
+Route::get('/userprofile/{id}',[UserController::class,'show'])->name('userprofile');
 Route::post('/userprofile/update/{id}',[UserController::class,'update'])->name('userprofile.update');

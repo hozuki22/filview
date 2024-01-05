@@ -14,9 +14,9 @@ class UserController extends Controller
         return view('profile.userprofile',compact('user'));
     }
 
-    public function update(Request $request,User $user)
+    public function update(Request $request)
     {
-        
+        $user = User::find($request->input('id'));
         $user->user_id = $request->input('user_id');
         $user->email = $request->input('email');
         $user->password = $request->input('password');
@@ -28,6 +28,6 @@ class UserController extends Controller
         // $user->birthday = $request->input('birthday');
         $user->save();
 
-        return redirect()->route('userprofile.update', $user)->with('flash_message','ユーザー情報が更新されました。');
+        return redirect()->route('userprofile', $user)->with('flash_message','ユーザー情報が更新されました。');
     }
 }                            
