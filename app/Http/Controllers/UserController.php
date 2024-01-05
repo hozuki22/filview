@@ -9,6 +9,11 @@ use Carbon\Carbon;
 
 class UserController extends Controller
 {
+    public function index(){
+        $users = User::all()->except([\Auth::id()]);
+        return view('userindex',compact('users'));
+    }
+
     public function show($id){
         $user = User::find($id);
         return view('profile.userprofile',compact('user'));
@@ -16,6 +21,12 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
+        //バリデーション
+        $request->validate([
+            'user_id' => 'required|max:255',
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
         $user = User::find($request->input('id'));
         $user->user_id = $request->input('user_id');
         $user->email = $request->input('email');

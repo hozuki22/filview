@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FollowController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,5 +32,18 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+
 Route::get('/userprofile/{id}',[UserController::class,'show'])->name('userprofile');
 Route::post('/userprofile/update/{id}',[UserController::class,'update'])->name('userprofile.update');
+
+//ユーザー一覧
+Route::get('/users',[UserController::class,'index'])->name('user.index');
+//ユーザーフォロー機能
+Route::post('/users/follow',[FollowController::class,'follow'])->name('user.follow');
+
+//フォローユーザー一覧
+Route::get('/followuser/index',[FollowController::class,'index'])->name('follow.index');
+//フォロワーユーザー一覧
+Route::get('/follower/index',[FollowController::class,'followerindex']);
+//フォロー削除
+Route::post('/followuser/delete/{id}',[FollowController::class,'delete'])->name('follow.delete');
