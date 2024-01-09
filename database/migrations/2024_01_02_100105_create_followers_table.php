@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('follower_id');
             $table->string('followed_id');
             $table->timestamps();
+            $table->boolean('followflag')->default(1);
             $table->softDeletes()->nullable();
         });
     }

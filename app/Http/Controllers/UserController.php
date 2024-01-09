@@ -4,14 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Follower;
 use Carbon\Carbon;
 
 class UserController extends Controller
 {
     public function index(){
         $users = User::all()->except([\Auth::id()]);
-        return view('userindex',compact('users'));
+        $loginuser = Auth::user();
+        $followusers = new Follower();
+        $followusers = Follower::withTrashed()->where('follower_id', '=', Auth::user()->user_id)->get();
+        return view('userindex', compact('users','followusers','loginuser'));
     }
 
     public function show($id){

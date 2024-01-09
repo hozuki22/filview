@@ -13,14 +13,28 @@
     @if($users->isNotEmpty())
         @foreach($users as $user)
         <div id='usercard'>
-            <form action="{{ route('user.follow') }}" method="POST">
-            @csrf
-              <ul>
-                    <li>{{ $user->user_id }}</li>
-                    <input type="hidden" name="user_id" value="{{ $user->user_id }}">
-                    <button type="submit">フォローする</button>
-                </ul>
-            </form>
+            <ul>    
+                <li>{{ $user->user_id }}</li>
+                @foreach($followusers as $followuser)
+                    @if($user->user_id !== $followuser->followed_id && $loginuser->user_id !== $followuser->followed_id)    
+                    @continue
+                        
+                    @elseif( $followuser->follower_id == $loginuser->user_id && $user->user_id == $followuser->followed_id )
+                        <form action="{{ route('follow.delete',$followuser) }}" method="POST">
+                            @csrf
+                            <button type="submit">フォロー解除</button>
+                            
+                        </form>
+                    @elseif( $followuser->follower_id == $loginuser->user_id && $user->user_id != $followuser->followed_id || )
+                    <form action="{{ route('user.follow') }}" method="POST">
+                            @csrf
+                                <input type="hidden" name="user_id" value="{{ $user->user_id }}">
+                                <button type="submit">フォローする</button>
+                        </form>
+                    
+                    @endif  
+                @endforeach 
+            </ul>
         </div>
         @endforeach
     @endif

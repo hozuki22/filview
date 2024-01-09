@@ -9,14 +9,13 @@
     <h1>フォローユーザー一覧</h1>
     
             <div>
-                <ul>
-                    
+                <ul>    
                     @if($followusers->isNotEmpty())
                         @foreach($followusers as $followuser)
-                            <form action="{{ route('follow.delete',$followuser->id) }}" method="POST">
+                            <form action="{{ route('follow.delete',$followuser) }}" method="POST">
                                 <li>{{ $followuser->followed_id }}</li> 
                                 @csrf
-                                <button type="submit">フォロー解除</button>  
+                                <button type="submit">フォロー解除</button>
                             </form>
                         @endforeach
                     @else
