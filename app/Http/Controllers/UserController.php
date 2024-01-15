@@ -13,10 +13,19 @@ class UserController extends Controller
 {
     public function index(){
         $users = User::all()->except([\Auth::id()]);
-        $loginuser = Auth::user();
         $followusers = new Follower();
-        $followusers = Follower::withTrashed()->where('follower_id', '=', Auth::user()->user_id)->get();
-        return view('userindex', compact('users','followusers','loginuser'));
+        $followusers = Follower::where('follower_id', '=', Auth::user()->id)->get();
+        $array2[] = 0;
+        if($followusers->isNotEmpty()){
+            foreach($followusers as $followuser){
+                    $array2[] = $followuser->followed_id;
+            }
+            
+        }
+        
+        $loginuser = Auth::user();
+
+        return view('userindex', compact('users','followusers','loginuser','array2'));
     }
 
     public function show($id){
@@ -28,12 +37,12 @@ class UserController extends Controller
     {
         //バリデーション
         $request->validate([
-            'user_id' => 'required|max:255',
+            'user_name' => 'required|max:255',
             'email' => 'required|email',
             'password' => 'required',
         ]);
         $user = User::find($request->input('id'));
-        $user->user_id = $request->input('user_id');
+        $user->user_id = $request->input('user_name');
         $user->email = $request->input('email');
         $user->password = $request->input('password');
         $user->birthday = $request->input('birthday');

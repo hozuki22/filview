@@ -19,4 +19,8 @@ class Follower extends Model
         'followflag',
         'deleted_at',
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

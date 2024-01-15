@@ -45,5 +45,7 @@ Route::post('/users/follow',[FollowController::class,'follow'])->name('user.foll
 Route::get('/followuser/index',[FollowController::class,'index'])->name('follow.index');
 //フォロワーユーザー一覧
 Route::get('/follower/index',[FollowController::class,'followerindex']);
+//ユーザー一覧画面フォロー解除
+Route::post('/followuser/userindexdelete/{id}',[Followcontroller::class,'userindex_delete'])->name('userindex.followdelete');
 //フォロー削除
 Route::post('/followuser/delete/{followuser}',[FollowController::class,'delete'])->name('follow.delete');

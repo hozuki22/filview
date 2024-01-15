@@ -14,23 +14,19 @@
         @foreach($users as $user)
         <div id='usercard'>
             <ul>    
-                <li>{{ $user->user_id }}</li>
-                @foreach($followusers as $followuser)
-                    @if($followusers !== $loginuser->user_id && $followusers !== $user->user_id)
-                        <form action="{{ route('user.follow') }}" method="POST">
+                <li>{{ $user->user_name }}</li>
+                @if(!(in_array($user->id,$array2)))
+                <form action="{{ route('user.follow') }}" method="POST">
                             @csrf
-                                <input type="hidden" name="user_id" value="{{ $user->user_id }}">
+                                <input type="hidden" name="id" value="{{ $user->id }}">
                                 <button type="submit">フォローする</button>
-                        </form>
-                    @elseif( $followuser->follower_id == $loginuser->user_id && $user->user_id == $followuser->followed_id )
-                        <form action="{{ route('follow.delete',$followuser) }}" method="POST">
-                            @csrf
-                            <button type="submit">フォロー解除</button>
-                        </form>
-                    @elseif($user->user_id !== $followuser->followed_id )
-                        @continue
-                    @endif  
-                @endforeach 
+                </form>
+                @else
+                <form action="{{ route('userindex.followdelete',$user->id) }}" method="POST">
+                    @csrf
+                    <button type="submit">フォロー解除</button>
+                </form>
+                @endif
             </ul>
         </div>
         @endforeach

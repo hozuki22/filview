@@ -19,7 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'id',
-        'user_id',
+        'user_name',
         'email',
         'password',
         'birthday',
@@ -44,4 +44,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function followers(){
+        return $this->belongsTo(Follower::class);
+    }
 }

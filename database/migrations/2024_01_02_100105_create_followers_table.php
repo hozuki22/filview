@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('followers', function (Blueprint $table) {
             $table->id();
-            $table->string('follower_id');
-            $table->string('followed_id');
+            $table->integer('follower_id');
+            $table->integer('followed_id');
             $table->timestamps();
             $table->boolean('followflag')->default(1);
             $table->softDeletes()->nullable();
+
+            $table->foreign('follower_id')->references('user_name')->on('users');
+            $table->foreign('followed_id')->references('user_name')->on('users');
         });
     }
 
@@ -27,5 +30,12 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('followers');
+
+        $table->dropForeign(['followed_id']);
+        $table->dropForeign(['follower_id']);
+
+        $table->dropColumn('followed_id');
+        $table->dropColumn('follower_id');
+        
     }
 };
