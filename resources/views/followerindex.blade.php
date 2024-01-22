@@ -7,12 +7,20 @@
 </head>
 <body>
     <h1>フォロワーユーザー一覧</h1>
-    @if($followerusers->isNotEmpty())
-        @foreach($followerusers as $followeruser)
+    @if(!empty($follower))
+        @foreach($follower as $follower_user)
             <div>
                 <ul>
-                    <li>{{ $followeruser->follower_id }}</li>
-                    <a href="">フォローする</a>
+                    @if(!(in_array($follower_user,$follow)))
+                    <form action="{{ route('follower.follow',$follower_user) }}" method="POST">
+                        @csrf
+                        <li>{{ $follower_user }}</li>
+                        <button type="submit">フォローする</button>
+                    </form>
+                    @else
+                    <li>{{ $follower_user }}</li>
+                    <button disabled>フォロー中</button>
+                    @endif
                 </ul>
             </div>
         @endforeach

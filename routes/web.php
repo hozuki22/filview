@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FollowController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,14 +39,21 @@ Route::post('/userprofile/update/{id}',[UserController::class,'update'])->name('
 
 //ユーザー一覧
 Route::get('/users',[UserController::class,'index'])->name('user.index');
-//ユーザーフォロー機能
+//ユーザー一覧フォロー機能
 Route::post('/users/follow',[FollowController::class,'follow'])->name('user.follow');
-
+//フォロワーユーザー一覧フォロー機能
+Route::post('/follower_user/user_follow/{follower_user}',[FollowController::class,'follower_follow'])->name('follower.follow');
 //フォローユーザー一覧
 Route::get('/followuser/index',[FollowController::class,'index'])->name('follow.index');
 //フォロワーユーザー一覧
-Route::get('/follower/index',[FollowController::class,'followerindex']);
+Route::get('/follower/index',[FollowController::class,'followerindex'])->name('follower.index');
 //ユーザー一覧画面フォロー解除
 Route::post('/followuser/userindexdelete/{id}',[Followcontroller::class,'userindex_delete'])->name('userindex.followdelete');
 //フォロー削除
-Route::post('/followuser/delete/{followuser}',[FollowController::class,'delete'])->name('follow.delete');
+Route::post('/followuser/delete/{follow_user}',[FollowController::class,'delete'])->name('follow.delete');
+
+//仮映画一覧
+Route::get('/cinema/index',[ReviewController::class,'cinemaindex']);
+
+//レビュー入力画面
+Route::post('/review/create/{id}',[ReviewController::class,'create'])->name('review.create');

@@ -19,12 +19,9 @@ class UserController extends Controller
         if($followusers->isNotEmpty()){
             foreach($followusers as $followuser){
                     $array2[] = $followuser->followed_id;
-            }
-            
+            }  
         }
-        
         $loginuser = Auth::user();
-
         return view('userindex', compact('users','followusers','loginuser','array2'));
     }
 

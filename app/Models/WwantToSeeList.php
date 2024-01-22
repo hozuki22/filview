@@ -6,21 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Follower extends Model
+class WwantToSeeList extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $table = 'followers';
+    protected $table = 'want_to see_lists';
+
     protected $fillable =
     [
         'id',
-        'follower_id',
-        'followed_id',
-        'followflag',
+        'user_id',
+        'cinema_code',
+        'saw_flag',
         'deleted_at',
     ];
 
-    public function user(){
-        return $this->belongsToMany(User::class);
-    }
 }

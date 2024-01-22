@@ -6,21 +6,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Follower extends Model
+class Review extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $table = 'followers';
+    protected $table = 'reviews';
+
     protected $fillable =
     [
         'id',
-        'follower_id',
-        'followed_id',
-        'followflag',
+        'user_id',
+        'review_id',
+        'cinema_code',
+        'point',
+        'review_comment',
         'deleted_at',
     ];
 
-    public function user(){
-        return $this->belongsToMany(User::class);
-    }
+
 }
