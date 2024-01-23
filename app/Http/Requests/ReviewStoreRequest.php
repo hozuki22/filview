@@ -22,7 +22,8 @@ class ReviewStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'point' => ['required'],
+            'review_comment' => ['max:800'],
         ];
     }
 }

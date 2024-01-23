@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Models\Review;
+use App\Http\Requests\ReviewStoreRequest;
 
 class ReviewController extends Controller
 {
@@ -31,7 +34,15 @@ class ReviewController extends Controller
     }
 
     //レビュー登録機能
-    public function review_store(ReviewRequest $request){
-      
+    public function review_store(ReviewStoreRequest $request){
+        $post = new Review();
+        $post->user_id = Auth::user()->id;
+        $post->review_id = Auth::user()->id;
+        $post->cinema_code = $request->input('cinema_code');
+        $post->point = $request->input('point');
+        $post->review_comment = $request->input('review_comment');
+        $post->save();
+
+        return redirect()->route('cinema.index')->with('flash_message','レビューが投稿されました。');
     }
 }

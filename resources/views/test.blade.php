@@ -6,11 +6,14 @@
     <title>APIテスト</title>
 </head>
 <body>
+    @if (session('flash_message'))
+        <p>{{ session('flash_message') }}</p>
+    @endif
     <div>
         <ul>
         @foreach($films['results'] as $film)
             <li>{{ $film['title'] }}</li>
-            <img src="{{ $film['poster_path'] }}" alt="ポスターパス"> 
+            <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{ $film['poster_path'] }}" alt="ポスターパス"> 
             <form action="{{ route('review.create',$film['id']) }}" method="POST">
                 @csrf
                 <input type="hidden" name="cinema_code" value="{{ $film['id'] }}">

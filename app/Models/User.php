@@ -48,4 +48,9 @@ class User extends Authenticatable
     public function followers(){
         return $this->belongsTo(Follower::class);
     }
+
+    public function Reviews(){
+        //１つレビューは１人のユーザーに紐づく
+        return $this->hasMany(Review::class);
+    }
 }

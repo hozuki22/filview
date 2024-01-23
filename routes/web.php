@@ -53,7 +53,10 @@ Route::post('/followuser/userindexdelete/{id}',[Followcontroller::class,'userind
 Route::post('/followuser/delete/{follow_user}',[FollowController::class,'delete'])->name('follow.delete');
 
 //仮映画一覧
-Route::get('/cinema/index',[ReviewController::class,'cinemaindex']);
+Route::get('/cinema/index',[ReviewController::class,'cinemaindex'])->name('cinema.index');
 
 //レビュー入力画面
 Route::post('/review/create/{id}',[ReviewController::class,'create'])->name('review.create');
+
+//レビュー登録機能
+Route::post('/review/post/',[ReviewController::class,'review_store'])->name('review.post');

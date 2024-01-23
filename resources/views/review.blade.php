@@ -8,20 +8,20 @@
 <body>
     <p>{{ $title }}のレビュー</p>
 
-    <form action="" method="POST">
+    <form action="{{ route('review.post') }}" method="POST">
         @csrf
         <div> 
             <label for="point">レビュー点数:</label>
-            <select name="" id="">
+            <select name="point" id="point">
                 @for($i=1; $i<=10; $i++)
                     <option value="{{ $i }}">{{ $i }}</option>                
                 @endfor
             </select>
-
             <br>
             <label for="review_comment">レビュー:</label>
             <textarea name="review_comment" id="review_comment" cols="30" rows="10"placeholder="レビュー内容を入力してください。"></textarea>
             <br>
+            <input type="hidden" name="cinema_code" value="{{ $cinema_code }} ">
             <button type="submit">登録する</button>
         </div>
     

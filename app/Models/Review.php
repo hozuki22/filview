@@ -23,5 +23,10 @@ class Review extends Model
         'deleted_at',
     ];
 
+    public function User(){
+        //１のレビューは１人のレビューにひもづく
+        return $this->belongsTo(User::class);
+    }
+
 
 }
