@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class FollowController extends Controller
 {
-    //ユーザー一覧フォロー機能
+    //ユーザー一覧フォロー機能c
     public function follow(Request $request){
         $follower = new follower();
         $follower->follower_id = Auth::user()->id;
@@ -27,7 +27,7 @@ class FollowController extends Controller
     public function follower_follow(Follower $follower,$follower_user){
         $user = User::where('user_name',"=",$follower_user)->first();
         $follower = Follower::withTrashed()->updateOrCreate(
-            ['follower_id' => $user->id, 'followed_id' => Auth::user()->id],
+            ['follower_id' => Auth::user()->id, 'followed_id' => $user->id],
             ['deleted_at' => null],
         );
         return redirect()->route('follower.index')->with('flash_message','フォローしました');
@@ -36,7 +36,6 @@ class FollowController extends Controller
     //フォローユーザー一覧ページ
     public function index(){
         $follow_users = Follower::where('follower_id', '=',Auth::user()->id)->get();
-        
         if($follow_users->isNotEmpty()){
             foreach($follow_users as $follow_user){
             $user = User::where('id','=',$follow_user->followed_id)->first();
@@ -45,33 +44,33 @@ class FollowController extends Controller
         }else{
             $followed_users = null;
         }
-        
         return view('followindex', compact('followed_users'));
     }
     //フォロワーユーザー一覧ページ
     public function followerindex(){
+        //フォロワーユーザーの取り出し
         $follower_users = new follower();
-        $follower_users = Follower::where('followed_id','=',Auth::user()->id)->get();
+        $follower_users = Follower::where('followed_id','=',Auth::user()->id)->get();        
         if($follower_users->isNotEmpty()){
             foreach($follower_users as $follower_user){
-                $user_name = User::where('id','=',$follower_user->follower_id)->first();
-                $follower[] = $user_name->user_name;
+                $follower_user_name = User::where('id','=',$follower_user->follower_id)->first();
+                $loginuser_followers[] = $follower_user_name->user_name;
             }
-
         }else{
-            $follower = null;
+            $loginuser_followers[] = 0;
         };
-
-        $follow_users = Follower::where('follower_id', '=', Auth::user()->id)->get();
+        //ログインユーザーがフォローしているユーザー名の取り出し
+        $follow_users = new follower();
+        $follow_users =Follower::where('follower_id', '=',Auth::user()->id)->get();
         if($follow_users->isNotEmpty()){
             foreach($follow_users as $follow_user){
                 $follow_user_name = User::where('id', '=', $follow_user->followed_id)->first();
-                $follow[] = $follow_user_name->user_name;
+                $loginuser_follow_name[] = $follow_user_name->user_name;
             }
-        }else{
-            $follow = null;
+        }else {
+            $loginuser_follow_name[] = 0;
         }
-        return view('followerindex',compact('follower','follow'));
+        return view('followerindex',compact('loginuser_followers','loginuser_follow_name'));
     }
 
     //ユーザー一覧画面ォロー解除機能

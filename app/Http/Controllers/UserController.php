@@ -11,18 +11,19 @@ use Carbon\Carbon;
 
 class UserController extends Controller
 {
+    //ユーザー一覧表示
     public function index(){
         $users = User::all()->except([\Auth::id()]);
-        $followusers = new Follower();
-        $followusers = Follower::where('follower_id', '=', Auth::user()->id)->get();
-        $array2[] = 0;
-        if($followusers->isNotEmpty()){
-            foreach($followusers as $followuser){
-                    $array2[] = $followuser->followed_id;
+        $follow_users = new Follower();
+        $follow_users = Follower::where('follower_id', '=', Auth::user()->id)->get();
+        $followed_user[] = 0;
+        if($follow_users->isNotEmpty()){
+            foreach($follow_users as $follow_user){
+                    $followed_user[] = $follow_user->followed_id;
             }  
         }
         $loginuser = Auth::user();
-        return view('userindex', compact('users','followusers','loginuser','array2'));
+        return view('userindex', compact('users','follow_users','loginuser','followed_user'));
     }
 
     public function show($id){

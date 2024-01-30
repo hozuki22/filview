@@ -6,7 +6,7 @@
     <title>レビューコメント</title>
 </head>
 <body>
-    <p>{{ $title }}のレビュー</p>
+    <p>{{ $cinema['title'] }}のレビュー</p>
 
     <form action="{{ route('review.post') }}" method="POST">
         @csrf
@@ -21,7 +21,7 @@
             <label for="review_comment">レビュー:</label>
             <textarea name="review_comment" id="review_comment" cols="30" rows="10"placeholder="レビュー内容を入力してください。"></textarea>
             <br>
-            <input type="hidden" name="cinema_code" value="{{ $cinema_code }} ">
+            <input type="hidden" name="cinema_code" value="{{ $cinema['id']}} ">
             <button type="submit">登録する</button>
         </div>
     

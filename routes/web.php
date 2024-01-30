@@ -42,7 +42,7 @@ Route::get('/users',[UserController::class,'index'])->name('user.index');
 //ユーザー一覧フォロー機能
 Route::post('/users/follow',[FollowController::class,'follow'])->name('user.follow');
 //フォロワーユーザー一覧フォロー機能
-Route::post('/follower_user/user_follow/{follower_user}',[FollowController::class,'follower_follow'])->name('follower.follow');
+Route::post('/follower_user/user_follow/{loginuser_follower}',[FollowController::class,'follower_follow'])->name('follower.follow');
 //フォローユーザー一覧
 Route::get('/followuser/index',[FollowController::class,'index'])->name('follow.index');
 //フォロワーユーザー一覧
@@ -60,3 +60,6 @@ Route::post('/review/create/{id}',[ReviewController::class,'create'])->name('rev
 
 //レビュー登録機能
 Route::post('/review/post/',[ReviewController::class,'review_store'])->name('review.post');
+
+//レビュー詳細機能
+Route::get('/review/detail',[ReviewController::class,'detail'])->name('review.detail');
