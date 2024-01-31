@@ -16,7 +16,6 @@ class Review extends Model
     [
         'id',
         'user_id',
-        'review_id',
         'cinema_code',
         'point',
         'review_comment',

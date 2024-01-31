@@ -28,7 +28,7 @@ class ReviewController extends Controller
     return view('test',compact('cinemas'));
   }
     //レビュー入力画面
-  public function create(Request $request,$id){
+  public function create($id){
     $client = new Client();
     $url = config('api_value.api_url');
     $method = config('api_value.api_method');
@@ -48,7 +48,6 @@ class ReviewController extends Controller
   public function review_store(ReviewStoreRequest $request){
     $post = new Review();
     $post->user_id = Auth::user()->id;
-    $post->review_id = Auth::user()->id;
     $post->cinema_code = $request->input('cinema_code');
     $post->point = $request->input('point');
     $post->review_comment = $request->input('review_comment');
@@ -57,13 +56,24 @@ class ReviewController extends Controller
   }
 
   //レビュー詳細機能
-  public function detail(){
-    $login_user_reviewes = Review::where('id','=',Auth::user()->id)->get();
-    foreach($login_user_reviewes as $login_user_review){
-      $user[] = $login_user_review->user->user_name;
-    }
-    
-    $user = User::where('id','=',Auth::user()->id)->first();
-    $reviews= $user->reviews;
+  public function detail(Review $review_comment,$id){
+    //映画詳細データの収集
+    $client = new Client();
+    $url = config('api_value.api_url');
+    $method = config('api_value.api_method');
+    $authorization = config('api_value.api_authorization');
+    $response = $client->request($method, $url."/3/movie/".$id."?language=ja-JP", [
+      'headers' => [
+        'Authorization' => $authorization,
+        'accept' => 'application/json',
+      ],
+    ]);
+    $cinema = $response->getBody();
+    $cinema = json_decode($cinema,true); 
+
+    //映画のレビューデータ収集
+    $review_comments = Review::where('cinema_code','=',$id)->get();
+    return view('review.detail',compact('cinema','review_comments'));
+
   }
 }
