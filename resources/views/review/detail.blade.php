@@ -25,14 +25,15 @@
             </ul>
         </div>
     </div>
-    <div id="cinema_review">
+        <div id="cinema_review">
         <h2>ユーザーコメント</h2>
         @foreach($review_comments as $review_comment)
             <div>
                 <table>
                     <tr>
                         <th>ユーザーID:</th>
-                        <td>{{ $review_comment->user->user_name}}</td>
+                        <td><a href="https://www.sejuku.net/">{{ $review_comment->user->user_name}}</a></td>
+                           
                     </tr>
                     <tr>
                         <th>レビュー日:</th>
@@ -48,9 +49,11 @@
                     </tr>
                 </table>
                 </ul>
+                <br>
             </div>
         @endforeach
     </div>
+
     
 </body>
-</html>
+</html> 

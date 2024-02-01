@@ -24,8 +24,6 @@
             <input type="hidden" name="cinema_code" value="{{ $cinema['id']}} ">
             <button type="submit">登録する</button>
         </div>
-    
-
     </form>
 </body>
 </html>

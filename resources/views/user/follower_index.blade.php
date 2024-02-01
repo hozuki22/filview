@@ -12,7 +12,7 @@
             <div>
                 <ul>
                     @if(in_array($loginuser_follow_name,$loginuser_followers))
-                    <form action="{{ route('follower.follow',$loginuser_follower) }}" method="POST">
+                    <form action="{{ route('follower.index',$loginuser_follower) }}" method="POST">
                         @csrf
                         <li>{{ $loginuser_follower }}</li>
                         <button type="submit">フォローする</button>

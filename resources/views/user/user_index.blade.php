@@ -17,13 +17,13 @@
             <ul>    
                 <li>{{ $user->user_name }}</li>
                 @if(!(in_array($user->id,$followed_user)))
-                <form action="{{ route('user.follow') }}" method="POST">
-                            @csrf
-                                <input type="hidden" name="id" value="{{ $user->id }}">
-                                <button type="submit">フォローする</button>
+                <form action="{{ route('user.followfunction') }}" method="POST">
+                    @csrf
+                        <input type="hidden" name="id" value="{{ $user->id }}">
+                        <button type="submit">フォローする</button>
                 </form>
                 @else
-                <form action="{{ route('userindex.followdelete',$user->id) }}" method="POST">
+                <form action="{{ route('user.followdeletefuncion',$user->id) }}" method="POST">
                     @csrf
                     <button type="submit">フォロー解除</button>
                 </form>

@@ -41,7 +41,7 @@ class ReviewController extends Controller
     ]);
     $cinema = $response->getBody();
     $cinema = json_decode($cinema,true);    
-    return view('review',compact('cinema'));
+    return view('review.review_create',compact('cinema'));
   }
 
     //レビュー登録機能
@@ -74,6 +74,5 @@ class ReviewController extends Controller
     //映画のレビューデータ収集
     $review_comments = Review::where('cinema_code','=',$id)->get();
     return view('review.detail',compact('cinema','review_comments'));
-
   }
 }

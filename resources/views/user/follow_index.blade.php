@@ -12,7 +12,7 @@
                 <ul> 
                     @if(!empty($followed_users))
                         @foreach($followed_users as $follow_user )
-                            <form action="{{ route('follow.delete',$follow_user) }}" method="POST">
+                            <form action="{{ route('follow.deletefunciton',$follow_user) }}" method="POST">
                                     <li>{{ $follow_user }}</li> 
                                     @csrf
                                     <input type="hidden", name="id", value="{{ $follow_user }}">

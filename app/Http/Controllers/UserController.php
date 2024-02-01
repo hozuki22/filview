@@ -23,7 +23,7 @@ class UserController extends Controller
             }  
         }
         $loginuser = Auth::user();
-        return view('userindex', compact('users','follow_users','loginuser','followed_user'));
+        return view('user.user_index', compact('users','follow_users','loginuser','followed_user'));
     }
 
     public function show($id){

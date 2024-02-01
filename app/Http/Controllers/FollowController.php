@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class FollowController extends Controller
 {
-    //ユーザー一覧フォロー機能c
+    //ユーザー一覧フォロー機能
     public function follow(Request $request){
         $follower = new follower();
         $follower->follower_id = Auth::user()->id;
@@ -30,7 +30,7 @@ class FollowController extends Controller
             ['follower_id' => Auth::user()->id, 'followed_id' => $user->id],
             ['deleted_at' => null],
         );
-        return redirect()->route('follower.index')->with('flash_message','フォローしました');
+        return redirect()->route('user.followfunction')->with('flash_message','フォローしました');
     }
 
     //フォローユーザー一覧ページ
@@ -44,7 +44,7 @@ class FollowController extends Controller
         }else{
             $followed_users = null;
         }
-        return view('followindex', compact('followed_users'));
+        return view('user.follow_index', compact('followed_users'));
     }
     //フォロワーユーザー一覧ページ
     public function followerindex(){
@@ -70,14 +70,14 @@ class FollowController extends Controller
         }else {
             $loginuser_follow_name[] = 0;
         }
-        return view('followerindex',compact('loginuser_followers','loginuser_follow_name'));
+        return view('user.follower_index',compact('loginuser_followers','loginuser_follow_name'));
     }
 
     //ユーザー一覧画面ォロー解除機能
     public function userindex_delete(Follower $followuser,$id){
         $followeuser = Follower::where('followed_id','=',$id)->where('follower_id','=',Auth::user()->id)->delete();
         // $followuser->followflag = 0;
-        return redirect()->route('follow.index')->with('flash_message', 'フォローを解除しました。');
+        return redirect()->route('user.index')->with('flash_message', 'フォローを解除しました。');
     }
     //フォロー一覧画面フォロー解除機能
     public function delete(Follower $followuser,$follow_user){
