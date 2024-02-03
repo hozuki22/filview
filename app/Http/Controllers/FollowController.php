@@ -39,12 +39,15 @@ class FollowController extends Controller
         if($follow_users->isNotEmpty()){
             foreach($follow_users as $follow_user){
             $user = User::where('id','=',$follow_user->followed_id)->first();
+            $count_follow_user = Follower::where('follower_id','=',$user->id)->count();
+            $count_follower_user = Follower::where('followed_id','=',$user->id)->count();
+            dd($count_follow_user);
             $followed_users[] = $user->user_name;
             }
         }else{
             $followed_users = null;
         }
-        return view('user.follow_index', compact('followed_users'));
+        return view('user.follow_index', compact('followed_users','count_follow_user','count_follower_user'));
     }
     //フォロワーユーザー一覧ページ
     public function followerindex(){

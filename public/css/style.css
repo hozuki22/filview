@@ -1,0 +1,16 @@
+/* review_crete_blade */
+#review_create_title{
+    text-align: center;
+ }
+
+ #review_form {
+    margin:0 auto;
+    max-width: 80%;
+ }
+
+ #review_submit_button {
+    display: block;
+    width:  20%;
+    margin: 30px auto;
+ }
+

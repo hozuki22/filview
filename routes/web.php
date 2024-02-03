@@ -47,7 +47,8 @@ Route::post('/users/follow',[FollowController::class,'follow'])->name('user.foll
 Route::post('/follower_user/user_follow/{loginuser_follower}',[FollowController::class,'follower_follow'])->name('follower.followfunction');
 
 //フォローユーザー一覧
-Route::get('/follow_user/index',[FollowController::class,'index'])->name('follow.index');
+Route::get('
+',[FollowController::class,'index'])->name('follow.index');
 
 //フォロワーユーザー一覧
 Route::get('/follower/index',[FollowController::class,'followerindex'])->name('follower.index');
