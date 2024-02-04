@@ -35,13 +35,13 @@ class FollowController extends Controller
 
     //フォローユーザー一覧ページ
     public function index(){
+        //ログインユーザーがフォローしているユーザーを取得
         $follow_users = Follower::where('follower_id', '=',Auth::user()->id)->get();
         if($follow_users->isNotEmpty()){
             foreach($follow_users as $follow_user){
             $user = User::where('id','=',$follow_user->followed_id)->first();
             $count_follow_user = Follower::where('follower_id','=',$user->id)->count();
             $count_follower_user = Follower::where('followed_id','=',$user->id)->count();
-            dd($count_follow_user);
             $followed_users[] = $user->user_name;
             }
         }else{

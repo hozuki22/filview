@@ -2,27 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" >
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>フォローユーザー一覧</title>
 </head>
 <body>
-    <h1>フォローユーザー一覧</h1>
-    
-            <div>
-                <ul> 
-                    @if(!empty($followed_users))
-                        @foreach($followed_users as $follow_user )
-                            <form action="{{ route('follow.deletefunciton',$follow_user) }}" method="POST">
-                                    <li>{{ $follow_user }}</li> 
-                                    @csrf
-                                    <input type="hidden", name="id", value="{{ $follow_user }}">
-                                    <button type="submit">フォロー解除</button>
-                            </form>
-                         @endforeach
-                    @else
-                        <p>現在、フォローしているユーザーはいません。</p>
-                    @endif    
-                </ul>
-            </div>
+    <h1 id="myfollow_user_title">フォローユーザー一覧</h1>
+    <div id="follow_user_list">
+        @if(!empty($followed_users))
+            @foreach($followed_users as $follow_user )
+                <div id="user_info_item">
+                    <table id="follow_user_table" class="table table-bordered">
+                        <tr>
+                            <th>ユーザー名:</th>
+                            <th>{{ $follow_user }}</th>
+                        </tr>
+                        <tr>
+                            <td>フォローユーザー数:</td>
+                            <td>{{ $count_follow_user }}</td>
+                        </tr>
+                        <tr>
+                            <td>フォロワーユーザー数:</td>
+                            <td>{{ $count_follower_user }}</td>
+                        </tr>
+                    </table>   
+                    <form id="follow_user_form" action="{{ route('follow.deletefunciton',$follow_user) }}" method="POST">
+                        @csrf
+                        <input type="hidden", name="id", value="{{ $follow_user }}">
+                        <button type="submit">フォロー解除</button>
+                    </form> 
+                    <br>
+                </div>
+            @endforeach 
+        @else
+            <p>現在、フォローしているユーザーはいません。</p>
+        @endif    
+    </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </html>

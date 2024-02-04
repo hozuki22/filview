@@ -14,3 +14,31 @@
     margin: 30px auto;
  }
 
+/* follow_index.blade */
+#myfollow_user_title {
+    text-align: center;
+    margin: 3% auto;
+}
+
+#follow_user_list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#user_info_item {
+    width: 50%;
+    height: 20%;
+}
+
+#follow_user_form {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#user_info_item .table{
+    width: 70%;
+    margin: 0 auto;    
+}
+
+
+
