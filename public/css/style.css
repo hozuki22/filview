@@ -40,5 +40,46 @@
     margin: 0 auto;    
 }
 
+/* detail.blade */
+#cinema_detail {
+    display: flex;
+    margin: 80px auto;
+    height: 30%;
+}
+
+#cinema_visual {
+    text-align: center;
+    width: 50%;
+    
+}
+
+#cinema_visual button {
+    padding: 10px 60px;
+}
+
+
+#visual {
+    margin-bottom: 30px;
+}
+
+#cinema_infomation {
+    font-size: x-large;
+    width: 50%;
+}
+
+#cinema_info_table{
+    height: 100%;
+}
+
+#cinema_review h2{
+    margin-left: 5%;
+}
+
+
+
+
+
+
+
 
 

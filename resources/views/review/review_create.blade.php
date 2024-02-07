@@ -23,11 +23,10 @@
             </div>
             <label for="review_comment">レビュー:</label>
             <div class="form-floating">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" name="review_comment"></textarea>
                 <label for="floatingTextarea2">レビュー内容を記載してください。</label>
                 <input type="hidden" name="cinema_code" value="{{ $cinema['id']}} ">
             </div>
-
             <button id="review_submit_button" type="submit">登録する</button>
         </form>
     </div>
