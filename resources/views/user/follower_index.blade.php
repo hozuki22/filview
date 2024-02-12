@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>フォロワーユーザー一覧</title>
-</head>
-<body>
+@extends('layouts.app')
+@section('title','フォロワーユーザー一覧')
+@section('content')
     <h1>フォロワーユーザー一覧</h1>
     @if(!empty($loginuser_followers))
         @foreach($loginuser_followers as $loginuser_follower)
@@ -27,5 +22,4 @@
         @else
         <p>フォロワーユーザーはいません。</p>
     @endif    
-</body>
-</html>
+@endsection

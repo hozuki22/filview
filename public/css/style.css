@@ -1,3 +1,67 @@
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+}
+
+main {
+    margin-top: 20%;
+}
+
+/* ヘッダー */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #0B7189;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+#header_inner {
+    display: flex;
+    justify-content: space-between;
+    height: inherit; /*親要素の高さを継承*/
+}
+
+#headline {
+    margin-bottom: 70px;
+    margin-top: 50px;
+    padding-left: 10%;
+    font-size: 40px;    
+}
+
+#nav_list ul {
+    margin: 70px 100px 60px 0px;
+    font-size: 20px;
+    list-style: none;
+}
+
+#nav_item a{
+    text-align: center;
+}
+
+/* フッター */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 80px;
+    background-color: #0B7189;
+}
+
+#footer p{
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
 /* review_crete_blade */
 #review_create_title{
     text-align: center;
@@ -74,6 +138,13 @@
 #cinema_review h2{
     margin-left: 5%;
 }
+
+#friend_review_card.card {
+    margin-left: 5%;
+    font-size: 30px;
+}
+
+
 
 
 
