@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title','フォローユーザー一覧')
-@section('conttent')
+@section('content')
     <h1 id="myfollow_user_title">フォローユーザー一覧</h1>
     <div id="follow_user_list">
         @if(!empty($followed_users))
@@ -22,7 +22,7 @@
                     </table>   
                     <form id="follow_user_form" action="{{ route('follow.deletefunciton',$follow_user) }}" method="POST">
                         @csrf
-                        <input type="hidden", name="id", value="{{ $follow_user }}">
+                        <input type="hidden" name="id" value="{{ $follow_user }}">
                         <button type="submit">フォロー解除</button>
                     </form> 
                     <br>

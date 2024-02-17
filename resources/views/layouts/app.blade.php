@@ -21,9 +21,24 @@
             <nav id="nav_list">
                 <ul class="nav justify-content-end">
                     <li class="nav-item">
-                        <a href="">マイページ</a>
+                        <a href="" id="mypage_link">マイページ</a>
+                    </li>
+                    <li>
+                        <!-- Authentication -->
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+
+                            <x-responsive-nav-link :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </x-responsive-nav-link>
+                        </form> 
                     </li>
                 </ul>
+                <div class="px-4">
+                    <div class="font-medium text-base text-gray-800">ユーザーID：{{ Auth::user()->user_name }}</div>
+                </div>
             </nav>
         </div>
     </header>

@@ -1,148 +1,221 @@
-html {
-    height: 100%;
-}
+    /* サイト設定 */
+    html {
+        height: 100%;
+    }
 
-body {
-    min-height: 100vh;
-}
+    body {
+        min-height: 100vh;
+    }
 
-main {
-    margin-top: 20%;
-}
+    main {
+        margin-top: 13%;
+        height: 1050px;
+    }
 
-/* ヘッダー */
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #0B7189;
-}
+    /* ゲスト用blade設定 */
+    .guest_content {
+        margin-top: 300px;
+    }
 
-a {
-    color: white;
-    text-decoration: none;
-}
+    /* ヘッダー */
+    header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: #0B7189;
+    }
 
-#header_inner {
-    display: flex;
-    justify-content: space-between;
-    height: inherit; /*親要素の高さを継承*/
-}
+    a {
+        text-decoration: none   ;
+    }
 
-#headline {
-    margin-bottom: 70px;
-    margin-top: 50px;
-    padding-left: 10%;
-    font-size: 40px;    
-}
+    .shrink-0.flex.items-center {
+        width: 10px;
 
-#nav_list ul {
-    margin: 70px 100px 60px 0px;
-    font-size: 20px;
-    list-style: none;
-}
+    }
 
-#nav_item a{
-    text-align: center;
-}
+    #header_inner {
+        display: flex;
+        justify-content: space-between;
+        height: inherit; /*親要素の高さを継承*/
+    }
 
-/* フッター */
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    padding-bottom: 80px;
-    background-color: #0B7189;
-}
+    #headline {
+        margin-bottom: 70px;
+        margin-top: 50px;
+        padding-left: 10%;
+        font-size: 40px;    
+    }
 
-#footer p{
-    text-align: center;
-    color: white;
-    font-size: 20px;
-    margin-top: 20px;
-}
+    #headline a {
+        color: white;
+    }
 
-/* review_crete_blade */
-#review_create_title{
-    text-align: center;
- }
+    #nav_list ul {
+        margin: 70px 100px 60px 0px;
+        font-size: 20px;
+        list-style: none;
+    }
 
- #review_form {
-    margin:0 auto;
-    max-width: 80%;
- }
+    #mypage_link {
+        color: white;
+    }
 
- #review_submit_button {
-    display: block;
-    width:  20%;
-    margin: 30px auto;
- }
+    /* フッター */
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        padding-bottom: 80px;
+        background-color: #0B7189;
+    }
 
-/* follow_index.blade */
-#myfollow_user_title {
-    text-align: center;
-    margin: 3% auto;
-}
+    #footer p{
+        text-align: center;
+        color: white;
+        font-size: 20px;
+        margin-top: 20px;
+    }
 
-#follow_user_list {
-    display: flex;
-    flex-wrap: wrap;
-}
+    /* register.blade */
+    .new_user_title {
+        text-align: center;
+        margin: 0 auto;
+    }
 
-#user_info_item {
-    width: 50%;
-    height: 20%;
-}
+    .new_user_form {
+        width: 500px;
+        margin: 0 auto;
+    }
 
-#follow_user_form {
-    margin-top: 20px;
-    text-align: center;
-}
+    .mt-4 {
+        margin: 0 auto;
+    }
 
-#user_info_item .table{
-    width: 70%;
-    margin: 0 auto;    
-}
-
-/* detail.blade */
-#cinema_detail {
-    display: flex;
-    margin: 80px auto;
-    height: 30%;
-}
-
-#cinema_visual {
-    text-align: center;
-    width: 50%;
-    
-}
-
-#cinema_visual button {
-    padding: 10px 60px;
-}
+    .new_submit_menu {
+        text-align: center;
+    }
 
 
-#visual {
-    margin-bottom: 30px;
-}
 
-#cinema_infomation {
-    font-size: x-large;
-    width: 50%;
-}
+    /* 検索バー */
+    .input-group {
+        width: 50%;
+        margin: 0 auto;
+    }
 
-#cinema_info_table{
-    height: 100%;
-}
+    /* マイページメニュー */
+    #mypage_menu {
+        margin: 30px auto 30px auto;
+        width: 50%;
+    }
 
-#cinema_review h2{
-    margin-left: 5%;
-}
+    /* review_crete_blade */
+    #review_create_title{
+        text-align: center;
+    }
 
-#friend_review_card.card {
-    margin-left: 5%;
-    font-size: 30px;
-}
+    #review_form {
+        margin:0 auto;
+        max-width: 80%;
+    }
+
+    #review_submit_button {
+        display: block;
+        width:  20%;
+        margin: 30px auto;
+    }
+
+    /* follow_index.blade */
+    #myfollow_user_title {
+        text-align: center;
+        margin: 3% auto;
+    }
+
+    #follow_user_list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #user_info_item {
+        width: 50%;
+        height: 20%;
+    }
+
+    #follow_user_form {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    #user_info_item .table{
+        width: 70%;
+        margin: 0 auto;    
+    }
+
+    /* follower.blade */
+    #follower_content{
+        width: 50%;
+        margin-top: 30px;
+    }
+    #follower_title {
+        text-align: center;
+    }
+
+    #follower_list {
+        width: 50%;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    #follower_button {
+        margin-top: 30px;
+        text-align: center;
+        
+    }
+
+    #mypage_menu {
+        display: flex;
+    }
+
+    /* detail.blade */
+    #cinema_detail {
+        display: flex;
+        margin: 80px auto;
+        height: 30%;
+    }
+
+    #cinema_visual {
+        text-align: center;
+        width: 50%;
+        
+    }
+
+    #cinema_visual button {
+        padding: 10px 60px;
+    }
+
+
+    #visual {
+        margin-bottom: 30px;
+    }
+
+    #cinema_infomation {
+        font-size: x-large;
+        width: 50%;
+    }
+
+    #cinema_info_table{
+        height: 100%;
+    }
+
+    #cinema_review h2{
+        margin-left: 5%;
+    }
+
+    #friend_review_card.card {
+        margin-left: 5%;
+        font-size: 30px;
+    }
 
 
 
