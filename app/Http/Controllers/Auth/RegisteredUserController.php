@@ -24,20 +24,32 @@ class RegisteredUserController extends Controller
         return view('auth.register');
     }
 
+    public function confirm(Request $request) {
+        $user_name = $request->input('user_name');
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $birthday = new Carbon();
+        $birthday = Carbon::create(
+            $request->year, $request->month, $request->day
+        );
+
+        return view('auth.confirm', compact('user_name','email','birthday','password'));
+        
+    }
+
     /**
      * Handle an incoming registration request.
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
-        $request->validate([
-            'user_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            //'birthday' => ['required'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
-
+        // $request->validate([
+        //     'user_name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+        //     'birthday' => ['required'],
+        //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        // ])
         $birthday = new Carbon();
         $birthday = Carbon::create(
             $request->year, $request->month, $request->day
@@ -49,11 +61,13 @@ class RegisteredUserController extends Controller
             'birthday' => $birthday,
             'password' => Hash::make($request->password),
         ]);
-
         event(new Registered($user));
-
-        Auth::login($user);
-
-        return redirect(RouteServiceProvider::HOME);
+        return redirect('complete');
     }
+
+    public function complete(){
+        return view('auth.user_create_complete');
+    }
+
+
 }

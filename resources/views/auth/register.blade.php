@@ -6,7 +6,7 @@
     </x-slot>
 
     <h1 class="new_user_title">新規ユーザー登録</h1>
-    <form method="POST" action="{{ route('register') }}" class="new_user_form">
+    <form method="POST" action="{{ route('register.confirm') }}" class="new_user_form">
         @csrf
         <!-- user_name -->
         <div class="mt-4">
@@ -123,3 +123,4 @@
         </div>
     </x-slot>
 </x-guest-layout>
+    
