@@ -21,10 +21,20 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        $currentyear = date('Y');
+        return view('auth.register', compact('currentyear'));
     }
 
     public function confirm(Request $request) {
+        $request->validate([
+            'user_name' => ['required', 'string', 'max:255','unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'year' => ['required'],
+            'month' => ['required'],
+            'day' => ['required'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+       ]);
+       
         $user_name = $request->input('user_name');
         $email = $request->input('email');
         $password = $request->input('password');
@@ -32,6 +42,7 @@ class RegisteredUserController extends Controller
         $birthday = Carbon::create(
             $request->year, $request->month, $request->day
         );
+
 
         return view('auth.confirm', compact('user_name','email','birthday','password'));
         
@@ -44,12 +55,8 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'user_name' => ['required', 'string', 'max:255'],
-        //     'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-        //     'birthday' => ['required'],
-        //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        // ])
+
+
         $birthday = new Carbon();
         $birthday = Carbon::create(
             $request->year, $request->month, $request->day
