@@ -53,6 +53,7 @@ class FollowController extends Controller
     public function followerindex(){
         //フォロワーユーザーの取り出し
         $follower_users = new follower();
+        $login_user_id = Auth::user()->id;
         $follower_users = Follower::where('followed_id','=',Auth::user()->id)->get();        
         if($follower_users->isNotEmpty()){
             foreach($follower_users as $follower_user){
@@ -73,7 +74,7 @@ class FollowController extends Controller
         }else {
             $loginuser_follow_name[] = 0;
         }
-        return view('user.follower_index',compact('loginuser_followers','loginuser_follow_name'));
+        return view('user.follower_index',compact('loginuser_followers','loginuser_follow_name','login_user_id'));
     }
 
     //ユーザー一覧画面ォロー解除機能

@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
+    <header class="common_header">
         <div id="header_inner">
             <h1 id="headline"><a href="">filview</a></h1>
             <nav id="nav_list">

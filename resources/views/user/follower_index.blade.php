@@ -1,29 +1,7 @@
 @extends('layouts.app')
 @section('title','フォロワーユーザー一覧')
 @section('content')
-    <!-- 検索窓の作成 -->
-    <div class="input-group">
-        <input type="text" class="form-control" placeholder="キーワードを入力">
-        <button class="btn btn-outline-success" type="button" id="button-addon2"><i class="fas fa-search"></i> 検索</button>
-    </div>
-    <!-- mypageメニュー -->
-    <div id="mypage_menu">
-        <div id=user_icon>
-            <img src="" alt="ユーザーアイコン">
-        </div>
-        <div id="user_id">
-            <p>ユーザーネーム</p>
-        </div>
-        <div id="menu">
-            <a href="https://getbootstrap.jp/">プロフィール編集</a>
-        </div>
-    </div>
-    <div id="mypage_menu_link">
-        <a href="">視聴済みリスト</a>
-        <a href="">見たいリスト</a>
-        <a href="">フォロー中</a>
-        <a href="">フォロワー</a>
-    </div>
+    @include('layouts.mypageheader')
     <h1 id="follower_title">フォロワーユーザー一覧</h1>
     @if(!empty($loginuser_followers))
         @foreach($loginuser_followers as $loginuser_follower)
