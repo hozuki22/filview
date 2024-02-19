@@ -15,7 +15,8 @@ class PasswordResetLinkController extends Controller
      */
     public function create(): View
     {
-        return view('auth.forgot-password');
+        $currentyear = date('Y');
+        return view('auth.forgot-password',compact('currentyear'));
     }
 
     /**
@@ -27,6 +28,9 @@ class PasswordResetLinkController extends Controller
     {
         $request->validate([
             'email' => ['required', 'email'],
+            'year' => ['required'],
+            'month' => ['required'],
+            'day' => ['required']
         ]);
 
         // We will send the password reset link to this user. Once we have attempted

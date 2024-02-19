@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\WantToWatchListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,3 +70,9 @@ Route::post('/review/post/',[ReviewController::class,'review_store'])->name('rev
 
 //レビュー詳細機能
 Route::get('/review/detail/{id}',[ReviewController::class,'detail'])->name('review.detail');
+
+//見たいリスト一覧表示
+Route::get('/wanttoseelist/index',[WantToWatchListController::class,'index'])->name('wanttosee.index');
+
+//見たいリスト登録機能
+Route::get('/wanttoseelist/store/{id}',[WantToWatchListController::class,'store'])->name('wanttosee.store');

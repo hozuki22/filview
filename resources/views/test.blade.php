@@ -14,8 +14,9 @@
         @foreach($cinemas['results'] as $cinema)
             <li>{{ $cinema['title'] }}</li>
             <a href="{{ route('review.detail',$cinema['id']) }}"><img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{ $cinema['poster_path'] }}" alt="ポスターパス"> </a>
+            <br>
             <a href="{{ route('review.create',$cinema['id']) }} "><button type="submit">見た</button></a>
-            <button type="submit">見たい</button>
+            <a href="{{ route('wanttosee.store',$cinema['id']) }}"><button type="submit">見たい</button></a>
             </form>
             <br>
        @endforeach

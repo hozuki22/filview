@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class WwantToSeeList extends Model
+class WantToSeeList extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $table = 'want_to see_lists';
+
+    protected $table = 'want_to_see_lists';
 
     protected $fillable =
     [
@@ -20,5 +21,6 @@ class WwantToSeeList extends Model
         'saw_flag',
         'deleted_at',
     ];
+
 
 }
