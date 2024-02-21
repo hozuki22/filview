@@ -14,6 +14,7 @@ class WantToWatchListController extends Controller
     public function index(){
         //ログインしているユーザーの見たいリストを全データを取得
         $user_want_see_lists = WantToSeeList::where('user_id', '=', Auth::User()->id)->get();
+        $login_user = Auth::user();
         if($user_want_see_lists->isNotEmpty()){
             foreach($user_want_see_lists as $user_want_see_list){
                 $client = new Client();
@@ -30,7 +31,7 @@ class WantToWatchListController extends Controller
                 $cinemas[] = json_decode($cinema,true);
             }
         }
-        return view('seelist.index',compact('user_want_see_lists','cinemas'));
+        return view('seelist.index',compact('user_want_see_lists','cinemas','login_user'));
     }
 
     //見たいリスト登録機能

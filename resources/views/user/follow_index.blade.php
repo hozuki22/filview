@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title','フォローユーザー一覧')
 @section('content')
+@include('layouts.mypageheader')
     <h1 id="myfollow_user_title">フォローユーザー一覧</h1>
     <div id="follow_user_list">
         @if(!empty($followed_users))

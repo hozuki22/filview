@@ -65,7 +65,40 @@
     /* mypageヘッダー */
     .mypage_header {
         z-index: 10;
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
     }
+
+    #mypage_body {
+        display: flex;
+        margin: 5px auto 5px auto;
+        
+    }
+    #mypage_body  .my_profile {
+        padding-left: 30rem;    
+    }
+
+    .my_profile {
+      text-align: center;
+    }
+
+
+    #mypage-card {
+        margin-top: 50px;
+    }
+
+    #mypage_menu_link {
+        margin-top: 50px;
+        text-align:justify;
+        text-align-last:justify;
+    }
+
+    .mypage_user p {
+        font-size: 30px;
+        font-weight: bold;
+    }
+    
 
     /* フッター */
     footer {

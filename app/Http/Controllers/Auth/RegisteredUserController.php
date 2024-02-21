@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use App\Models\Pre_User;
 use Carbon\Carbon;
 
 class RegisteredUserController extends Controller
@@ -19,7 +20,29 @@ class RegisteredUserController extends Controller
     /**
      * Display the registration view.
      */
-    public function create(): View
+    // メール認証登録画面
+    public function first_create(){
+        return view('auth.first_auth');
+    }
+
+    public function token_create(Request $request){
+        $request->validate([
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+       ]);
+
+       $token = uniqid();
+       $pre_user = new Pre_User();
+
+       $pre_user->email = $request->input('email');
+       $pre_user->hash = $token;
+       $pre_user->save();
+
+
+
+        return view('auth.secound-auth');
+    }
+    
+     public function create(): View
     {
         $currentyear = date('Y');
         return view('auth.register', compact('currentyear'));
@@ -44,7 +67,7 @@ class RegisteredUserController extends Controller
         );
 
 
-        return view('auth.confirm', compact('user_name','email','birthday','password'));
+        return redirect()->route('auth.first-auth')->with('flash_message','入力していただいたメールに登録フォームを送付しました。');
         
     }
 

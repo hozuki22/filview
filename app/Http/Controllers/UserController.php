@@ -32,11 +32,11 @@ class UserController extends Controller
         $year = substr($user->birthday,0,4);
         $month = substr($user->birthday,5,2);
         $day = substr($user->birthday,8,2);
-        
-
+        $login_user = Auth::user();
+       
         //今年の年を取得
         $currentyear = date('Y');
-        return view('profile.userprofile',compact('user','year','month','day','currentyear'));
+        return view('profile.userprofile',compact('user','year','month','day','currentyear','login_user'));
     }
 
     public function update(Request $request)
@@ -57,6 +57,7 @@ class UserController extends Controller
         );
         $user->birthday = $birthday;
         $user->save();
+       
 
         return redirect()->route('userprofile', $user)->with('flash_message','ユーザー情報が更新されました。');
     }

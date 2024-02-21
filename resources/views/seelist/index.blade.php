@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title','見たいリスト')
 @section('content')
+@include('layouts.mypageheader')
     <h1>見たいリスト</h1>
     <div>
         @foreach($cinemas as $cinema)
