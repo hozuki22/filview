@@ -15,6 +15,8 @@ Route::middleware('guest')->group(function () {
     Route::get('first-auth',[RegisteredUserController::class,'first_create'])->name('auth.first-auth');
     
     Route::post('submit',[RegisteredUserController::class,'token_create'])->name('token_create');
+
+    Route::get('sendmail/{taken}',[RegisteredUserController::class,'sendmail'])->name('sendmail');
     
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');

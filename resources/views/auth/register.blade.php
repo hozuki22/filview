@@ -6,6 +6,7 @@
     </x-slot>
 
     <h1 class="new_user_title">新規ユーザー登録</h1>
+    
     @if ($errors->any())
     <div>
         <ul>
@@ -15,6 +16,7 @@
         </ul>
     </div>
     @endif
+    
     <form method="POST" action="{{ route('register.confirm') }}" class="new_user_form">
         @csrf
         <!-- user_name -->
@@ -88,6 +90,7 @@
             </x-primary-button>
         </div>
     </form>
+    
     <x-slot name="footer">
         <div id="footer">
             <p>&copy;2024 hozuki</p>

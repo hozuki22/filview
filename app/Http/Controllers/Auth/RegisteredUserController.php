@@ -14,6 +14,8 @@ use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use App\Models\Pre_User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMail;
 
 class RegisteredUserController extends Controller
 {
@@ -37,14 +39,20 @@ class RegisteredUserController extends Controller
        $pre_user->hash = $token;
        $pre_user->save();
 
+       $url = route('sendmail',$token);
+    
 
+       Mail::send(new SendMail($url,$pre_user->email));
+    }
 
+    public function sendmail(){
         return view('auth.secound-auth');
     }
     
      public function create(): View
     {
         $currentyear = date('Y');
+        
         return view('auth.register', compact('currentyear'));
     }
 
