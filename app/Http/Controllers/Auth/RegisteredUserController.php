@@ -50,11 +50,18 @@ class RegisteredUserController extends Controller
 
     public function sendmail($token){
         $user_token = Pre_User::where('hash','=',$token)->first();
-        if($user_token = null){
-            return view('auth.failcreate_user')->with('message','無効なトークンです。');
+        $user_email = $user_token->email;
+        $currentyear = date('Y');
+        if($user_token == null){
+            return redirect()->route('fail.create')->with('message','無効なトークンです。もう一度やりおなしてください。');
         }else{
-            return view('auth.register');
+
+            return view('auth.register',compact('currentyear','user_email'));
         }
+    }
+
+    public function fail_create(){
+        return view('auth.failcreate_user');
     }
     
      public function create(): View
@@ -63,7 +70,6 @@ class RegisteredUserController extends Controller
         
         return view('auth.register', compact('currentyear'));
     }
-
     public function confirm(Request $request) {
         $request->validate([
             'user_name' => ['required', 'string', 'max:255','unique:'.User::class],

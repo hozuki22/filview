@@ -30,7 +30,7 @@
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="form-control" type="email" name="email" :value="old('email')" required autocomplete="username" />
+            <x-text-input id="email" class="form-control" type="email" name="email" :value=$user_email required autocomplete="username" disabled />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
         

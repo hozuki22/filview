@@ -21,6 +21,8 @@ Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');
 
+    Route::get('failcreate',[RegisteredUserController::class,'fail_create'])->name('fail.create');
+
     Route::post('register/confirm',[RegisteredUserController::class,'confirm'])->name('register.confirm');
     Route::get('register/confirm',[RegisteredUserController::class,'confirm']);
 
