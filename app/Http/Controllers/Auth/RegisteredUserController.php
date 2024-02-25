@@ -43,10 +43,18 @@ class RegisteredUserController extends Controller
     
 
        Mail::send(new SendMail($url,$pre_user->email));
+
+       return view('auth.presubmit');
+       
     }
 
-    public function sendmail(){
-        return view('auth.secound-auth');
+    public function sendmail($token){
+        $user_token = Pre_User::where('hash','=',$token)->first();
+        if($user_token = null){
+            return view('auth.failcreate_user')->with('message','無効なトークンです。');
+        }else{
+            return view('auth.register');
+        }
     }
     
      public function create(): View

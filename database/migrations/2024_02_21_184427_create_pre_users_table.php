@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pre_users', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('hash');
             $table->softDeletes()->nullable();
             $table->timestamps();

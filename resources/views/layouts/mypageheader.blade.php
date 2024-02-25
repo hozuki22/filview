@@ -10,7 +10,8 @@
             <div class="user_icon">
                 <img src="" alt="ユーザーアイコン">
             </div>
-            <div class="mypage_user">
+            <div class="mypage_user
+            ">
                 <p class="mypage_username">{{ $login_user->user_name }}</p>
             </div>
             <div class="my_profile">

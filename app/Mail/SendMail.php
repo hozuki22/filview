@@ -29,7 +29,7 @@ class SendMail extends Mailable
     public function envelope(): Envelope
     {
         $enbelope = new Envelope();
-        return $enbelope->subject('Send Mail')->to('test@test.com')->from('test3@test.com');
+        return $enbelope->subject('Send Mail')->to($this->email)->from('test1234@test.com');
 
     }
 
