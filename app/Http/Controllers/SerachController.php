@@ -14,14 +14,15 @@ class SerachController extends Controller
         $url = config('api_value.api_url');
         $method = config('api_value.api_method');
         $authorization = config('api_value.api_authorization');
-        $response = $client->request($method, $url."3/search/multi?query=.$keyword.&include_adult=false&language=ja-JP&page=1", [
+        $response = $client->request($method, $url."3/search/multi?query=.$keyword.&include_adult=false&language=ja-JP", [
             'headers' => [
               'Authorization' => $authorization,
               'accept' => 'application/json',
             ],
         ]);
-        $cinemas = $response->getBody();
-        $cinemas = json_decode($cinemas,true);
+       $cinemas = $response->getBody();
+       $cinemas = json_decode($cinemas,true);
+ 
         return view('search_result',compact('cinemas'));
     }
 
