@@ -1,8 +1,11 @@
 <div class="mypage_header">
     <!-- 検索窓の作成 -->
     <div class="input-group">
-        <input type="text" class="form-control" placeholder="キーワードを入力">
-        <button class="btn btn-outline-success" type="button" id="button-addon2"><i class="fas fa-search"></i> 検索</button>
+        <form action="{{ route('researh.result') }}" method="POST">
+            @csrf
+            <input type="text" class="form-control" placeholder="キーワードを入力" name="word">
+            <button class="btn btn-outline-success" type="button" id="button-addon2"><i class="fas fa-search"></i> 検索</button>
+        </form>
     </div>
     <!-- mypageメニュー -->
     <div id="mypage-card" class="card">
@@ -10,8 +13,7 @@
             <div class="user_icon">
                 <img src="" alt="ユーザーアイコン">
             </div>
-            <div class="mypage_user
-            ">
+            <div class="mypage_user">
                 <p class="mypage_username">{{ $login_user->user_name }}</p>
             </div>
             <div class="my_profile">

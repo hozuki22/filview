@@ -30,12 +30,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('followers');
-
-        $table->dropForeign(['followed_id']);
-        $table->dropForeign(['follower_id']);
-
-        $table->dropColumn('followed_id');
-        $table->dropColumn('follower_id');
         
     }
 };

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\SerachController;
 use App\Http\Controllers\WantToWatchListController;
 
 /*
@@ -76,3 +77,6 @@ Route::get('/wanttoseelist/index',[WantToWatchListController::class,'index'])->n
 
 //見たいリスト登録機能
 Route::get('/wanttoseelist/store/{id}',[WantToWatchListController::class,'store'])->name('wanttosee.store');
+
+//検索機能
+Route::post('/research/result',[SerachController::class,'search'])->name('researh.result');
