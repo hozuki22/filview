@@ -60,9 +60,11 @@
                 </div>
             </div>
         @endforeach
+        
         <h2>フレンド外ユーザーコメント</h2>
         <div id="user_review_card">
             <p>これはフレンド外のレビューです。</p>
         </div>
     </div>
+    {{ $review_comments->links() }}
 @endsection

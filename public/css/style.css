@@ -256,6 +256,19 @@
         font-size: 30px;
     }
 
+    path {
+        width: 10px;
+        height: 10px;
+    }
+
+    .flex.items-center.justify-between{
+        height: 100px;
+    }
+
+    .hidden.sm:flex-1.sm:flex.sm:items-center.sm:justify-between {
+        height: 100px;
+    }
+
 
 
 

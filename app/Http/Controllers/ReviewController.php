@@ -72,7 +72,7 @@ class ReviewController extends Controller
     $cinema = json_decode($cinema,true); 
 
     //映画のレビューデータ収集
-    $review_comments = Review::where('cinema_code','=',$id)->get();
+    $review_comments = Review::where('cinema_code','=',$id)->paginate(3);
     return view('review.detail',compact('cinema','review_comments'));
   }
 }
